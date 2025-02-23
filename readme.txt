@@ -4,7 +4,7 @@ Tags: facial recognition, two-factor authentication, login security, WordPress s
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: trunk
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,15 +42,6 @@ Our plugin addresses these issues by leveraging facial recognition for authentic
 
 Our innovative approach significantly mitigates vulnerabilities inherent in traditional login methods and strengthens WordPress security.
 
-
-Try Our Demo Before Installing!
-
-Want to test our plugin in a safe environment before installing it on your own site? We’ve set up a demo WordPress site where you can experience the plugin in action.
-
-Email us at [support@newwaypmsco.com] to request access – we’ll send you the demo site link, along with a username and password to log in and test the plugin.
-
-Once you're satisfied, you can install it on your own WordPress site with confidence!
-
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
@@ -59,10 +50,6 @@ Once you're satisfied, you can install it on your own WordPress site with confid
 4. After completing the registration, you can log out from the WordPress dashboard. Now, use the plugin to authenticate your identity through facial recognition. If the authentication is successful, you will be redirected to the WordPress login page.
 
 == Frequently Asked Questions ==
-
-= How can I test the plugin before installing it on my site? =
-We offer a demo site where you can test the plugin before installing it on your WordPress site.
-Email us at [support@newwaypmsco.com] to request access** – we’ll send you the demo site link, along with a username and password to log in and test the plugin.
 
 = What happens if the facial recognition fails? =
 In the rare event that facial recognition fails, users can retry or contact support for assistance.

@@ -4,7 +4,7 @@ Tags: facial recognition, two-factor authentication, login security, WordPress s
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: trunk
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,14 +40,11 @@ Our plugin addresses these issues by leveraging facial recognition for authentic
 3. Enhances user experience by enabling secure logins without expensive hardware.
 4. Provides a scalable solution for future platforms beyond WordPress.
 
-Our innovative approach significantly mitigates vulnerabilities inherent in traditional login methods and strengthens WordPress security.
-
-
-Try Our Demo Before Installing!
+**Try Our Demo Before Installing!**
 
 Want to test our plugin in a safe environment before installing it on your own site? We’ve set up a demo WordPress site where you can experience the plugin in action.
 
-Email us at [support@newwaypmsco.com] to request access – we’ll send you the demo site link, along with a username and password to log in and test the plugin.
+**Email us at [support@newwaypmsco.com]** to request access – we’ll send you the demo site link, along with a username and password to log in and test the plugin.
 
 Once you're satisfied, you can install it on your own WordPress site with confidence!
 
@@ -56,16 +53,18 @@ Once you're satisfied, you can install it on your own WordPress site with confid
 1. Upload the plugin files to the `/wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Register your username, password, and facial data using a webcam during the first-time setup. Make sure to capture a clear photo of your face and use the username and password you choose during registration.
-4. After completing the registration, you can log out from the WordPress dashboard. Now, use the plugin to authenticate your identity through facial recognition. If the authentication is successful, you will be redirected to the WordPress login page.
+4. After completing the registration, log out from the WordPress dashboard. The plugin will then prompt you to authenticate using facial recognition on the login page. Ensure your webcam is enabled.
 
 == Frequently Asked Questions ==
 
 = How can I test the plugin before installing it on my site? =
-We offer a demo site where you can test the plugin before installing it on your WordPress site.
-Email us at [support@newwaypmsco.com] to request access** – we’ll send you the demo site link, along with a username and password to log in and test the plugin.
+We offer a demo site where you can test the plugin before installing it on your WordPress site. Email us at **[support@newwaypmsco.com]** to request access – we’ll send you the demo site link, along with a username and password to log in and test the plugin.
 
 = What happens if the facial recognition fails? =
 In the rare event that facial recognition fails, users can retry or contact support for assistance.
+
+= What should I do if I get a "Domain mismatch" error? =
+This error occurs if you try to log in from a different domain than where you registered. Ensure you’re logging in from the same site where you set up your account (e.g., https://yourdomain.com). Contact support if the issue persists.
 
 = Is my facial data secure? =
 Yes, facial data is securely processed and stored on the Django server using industry-standard encryption. No sensitive data is stored in the WordPress database.
@@ -80,6 +79,11 @@ No, our plugin works with any standard webcam.
 3. **Security Settings:** Plugin settings page for administrators.
 
 == Changelog ==
+
+= 1.0.3 - 2025-02-23 =
+* Fixed login issue where FormData was not sending correctly, ensuring proper authentication with domain validation.
+* Improved logging in Django backend for better debugging.
+
 = 1.0.2 =
 * Disabled admin notices on plugin page to improve user experience.
 * Fixed minor bugs and improved performance.
@@ -94,6 +98,9 @@ No, our plugin works with any standard webcam.
 
 == Upgrade Notice ==
 
+= 1.0.3 =
+This update fixes a login issue with FormData and improves backend logging for easier debugging. Update recommended for all users.
+
 = 1.0.1 =
 This update addresses UI style issues in both the front-end and back-end views. It also improves the security integration for the webcam-based authentication.
 
@@ -103,34 +110,32 @@ This plugin connects to an external Django server to perform facial recognition 
 
 ### **Third-Party Service Details**
 
-1. **Service Name:** Django Server for Facial Recognition Authentication  
-   - **Purpose:** To authenticate users using facial recognition.  
-   - **Data Sent:**  
-     - During login:  
-       - Username and password entered by the user.  
-       - Facial image captured by the webcam for authentication.  
-     - During registration:  
-       - Username and password chosen by the user.  
-       - Facial image captured by the webcam to set up facial recognition.  
-   - **Storage & Security:**  
-     - All data is transmitted securely using SSL encryption.  
-     - Facial data is stored on our Django server with AES-256 encryption.  
-     - No facial data is stored in WordPress databases.  
-   - **Conditions:** Data is sent only when users initiate login or registration.  
-   - **User Control:** Currently, users cannot delete their facial data after registration. We are working on adding this feature in future updates. If users have concerns regarding their data, they can contact our support team for assistance.  
-   - **Terms of Service:** [https://api.newwaypmsco.com/terms-of-service/](https://api.newwaypmsco.com/terms-of-service/)  
-   - **Privacy Policy:** [https://api.newwaypmsco.com/privacy-policy/](https://api.newwaypmsco.com/privacy-policy/)  
+1. **Service Name:** Django Server for Facial Recognition Authentication
+   - **Purpose:** To authenticate users using facial recognition.
+   - **Data Sent:**
+     - During login:
+       - Username and password entered by the user.
+       - Facial image captured by the webcam for authentication.
+     - During registration:
+       - Username and password chosen by the user.
+       - Facial image captured by the webcam to set up facial recognition.
+   - **Storage & Security:**
+     - All data is transmitted securely using SSL encryption.
+     - Facial data is stored on our Django server with AES-256 encryption.
+     - No facial data is stored in WordPress databases.
+   - **Conditions:** Data is sent only when users initiate login or registration.
+   - **User Control:** We’re working on adding a feature to let users delete their facial data in future updates. For now, contact our support team at **[support@newwaypmsco.com]** for assistance with data management.
+   - **Terms of Service:** [https://api.newwaypmsco.com/terms-of-service/](https://api.newwaypmsco.com/terms-of-service/)
+   - **Privacy Policy:** [https://api.newwaypmsco.com/privacy-policy/](https://api.newwaypmsco.com/privacy-policy/)
 
-2. **External API Endpoints Used:**  
-   - `https://api.newwaypmsco.com/api/user/login/`  
-   - `https://api.newwaypmsco.com/api/user/register/`  
+2. **External API Endpoints Used:**
+   - `https://api.newwaypmsco.com/api/user/login/`
+   - `https://api.newwaypmsco.com/api/user/register/`
 
 By using this plugin, users acknowledge and agree to the terms and conditions outlined above.
 
-
 == Resources ==
-The SweetAlert library used in this plugin is publicly available and open source.
-You can find the original, non-minified source code here:
+This plugin uses the open-source SweetAlert library for user alerts. Non-minified source code is available in:
 - assets/js/bootstrap.js (non-minified version)
 - assets/js/sweetalert.min.js (SweetAlert library)
 

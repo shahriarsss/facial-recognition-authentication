@@ -26,26 +26,20 @@
         });
 
         $('#takephoto').on('click', take_snapshot);
-
         $('#retakephoto').on('click', reset_camera);
-
         $('#photoForm').on('submit', submit_form);
     });
 
     function keydown(e) {
         if ((e.which || e.keyCode) == 116 || ((e.which || e.keyCode) == 82 && ctrlKeyDown)) {
-            // Pressing F5 or Ctrl+R
             e.preventDefault();
         } else if ((e.which || e.keyCode) == 17) {
-            // Pressing only Ctrl
             ctrlKeyDown = true;
         }
     }
 
     function keyup(e) {
-        // Key up Ctrl
-        if ((e.which || e.keyCode) == 17)
-            ctrlKeyDown = false;
+        if ((e.which || e.keyCode) == 17) ctrlKeyDown = false;
     }
 
     function take_snapshot() {
@@ -53,7 +47,6 @@
             $('#results').html('<img id="imageprev" src="' + data_uri + '" class="d-block mx-auto rounded"/>');
             $('#photoStore').val(data_uri.replace(/^data\:image\/\w+\;base64\,/, ''));
         });
-
         toggle_camera_display(false);
     }
 
@@ -83,36 +76,39 @@
         const base64image = $('#imageprev').attr('src');
         const email = $('#email').val();
         const password = $('#password').val();
+        const domain = pluginData.domain;  // تغییر از site_id به domain
 
         const file = get_file_from_base64(base64image, `${email}.jpg`);
+
 
         const url = "https://api.newwaypmsco.com/api/user/register/";
         const payload = new FormData();
         payload.append('email', email);
         payload.append('password', password);
         payload.append('avatar', file);
+        payload.append('domain', domain);
 
         fetch(url, {
             method: 'POST',
             body: payload
         })
-        .then(response => {
-            if (response.ok) {
-                swal({
-                    title: 'Success',
-                    text: 'Register success',
-                    icon: 'success',
-                    buttons: false,
-                    timer: 2000
-                });
-            } else {
-                swal({
-                    title: 'Error',
-                    text: 'Something went wrong',
-                    icon: 'error'
-                });
-            }
-        });
+            .then(response => {
+                if (response.ok) {
+                    swal({
+                        title: 'Success',
+                        text: 'Register success',
+                        icon: 'success',
+                        buttons: false,
+                        timer: 2000
+                    });
+                } else {
+                    swal({
+                        title: 'Error',
+                        text: 'Something went wrong',
+                        icon: 'error'
+                    });
+                }
+            });
     }
 
     function get_file_from_base64(base64, fileName) {

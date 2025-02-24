@@ -13,7 +13,7 @@ License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Description: Face ID registration and login for WordPress
 Author: New-way
-Version: 1.0.3
+Version: 1.0.4
 */
 
 define('FRA_FACEID_DIR', plugin_dir_path(__FILE__));

@@ -4,7 +4,7 @@ Tags: facial recognition, two-factor authentication, login security, WordPress s
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,10 @@ No, our plugin works with any standard webcam.
 
 == Changelog ==
 
+= 1.0.3 - 2025-02-24 =
+* Added image quality checks for registration and login (face detection, clarity, and size).
+* Improved user guidance for capturing clear, close-up photos.
+
 = 1.0.3 - 2025-02-23 =
 * Fixed login issue where FormData was not sending correctly, ensuring proper authentication with domain validation.
 * Improved logging in Django backend for better debugging.
@@ -97,6 +101,9 @@ No, our plugin works with any standard webcam.
 * Initial release with facial recognition and secure authentication features.
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+This update ensures better photo quality for accurate facial recognition. Update for improved security.
 
 = 1.0.3 =
 This update fixes a login issue with FormData and improves backend logging for easier debugging. Update recommended for all users.

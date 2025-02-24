@@ -25,6 +25,8 @@
                 });
             });
             Webcam.attach('#my_camera');
+            // اضافه کردن راهنما
+            $('#camera-guide').html('<p>Please position your face close to the camera so it fills most of the frame.</p>');
         });
 
         $('#takephoto').on('click', take_snapshot);
@@ -94,28 +96,59 @@
 
         console.log("Payload ready to send");
 
+
         fetch("https://api.newwaypmsco.com/api/user/login/", {
             method: 'POST',
             body: payload
         })
             .then(response => {
                 console.log("Response status:", response.status);
-                if (response.ok) {
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        if (data.avatar2) {
+                            swal({
+                                title: 'Image Error',
+                                text: data.avatar2[0],
+                                icon: 'error'
+                            });
+                        } else if (data.message === 'Invalid Login Details!') {
+                            swal({
+                                title: 'Login Error',
+                                text: 'Incorrect email or password.',
+                                icon: 'error'
+                            });
+                        } else if (data.message === 'Domain mismatch') {
+                            swal({
+                                title: 'Domain Error',
+                                text: 'This user is not registered for this domain.',
+                                icon: 'error'
+                            });
+                        } else if (data.message === 'Face Not Recognized') {
+                            swal({
+                                title: 'Recognition Error',
+                                text: 'Your face was not recognized. Please try again.',
+                                icon: 'error'
+                            });
+                        } else {
+                            swal({
+                                title: 'Error',
+                                text: 'Something went wrong during login.',
+                                icon: 'error'
+                            });
+                        }
+                        throw new Error('Login failed');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success === 'True') {
                     swal({
                         title: 'Success',
-                        text: 'Login successful',
+                        text: 'Login successful!',
                         icon: 'success',
                         timer: 2000
                     }).then(() => refresh_page());
-                } else {
-                    response.text().then(text => {
-                        console.log("Login error response:", text);
-                        swal({
-                            title: 'Error',
-                            text: 'Something went wrong: ' + text,
-                            icon: 'error'
-                        });
-                    });
                 }
             })
             .catch(error => {

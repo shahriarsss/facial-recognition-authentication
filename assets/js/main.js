@@ -23,6 +23,8 @@
                 });
             });
             Webcam.attach('#my_camera');
+            // اضافه کردن راهنما
+            $('#camera-guide').html('<p>Please position your face close to the camera so it fills most of the frame.</p>');
         });
 
         $('#takephoto').on('click', take_snapshot);
@@ -76,11 +78,9 @@
         const base64image = $('#imageprev').attr('src');
         const email = $('#email').val();
         const password = $('#password').val();
-        const domain = pluginData.domain;  // تغییر از site_id به domain
+        const domain = pluginData.domain;
 
         const file = get_file_from_base64(base64image, `${email}.jpg`);
-
-
         const url = "https://api.newwaypmsco.com/api/user/register/";
         const payload = new FormData();
         payload.append('email', email);
@@ -93,21 +93,49 @@
             body: payload
         })
             .then(response => {
-                if (response.ok) {
-                    swal({
-                        title: 'Success',
-                        text: 'Register success',
-                        icon: 'success',
-                        buttons: false,
-                        timer: 2000
-                    });
-                } else {
-                    swal({
-                        title: 'Error',
-                        text: 'Something went wrong',
-                        icon: 'error'
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        if (data.avatar) {
+                            swal({
+                                title: 'Image Error',
+                                text: data.avatar[0],
+                                icon: 'error'
+                            });
+                        } else if (data.email) {
+                            swal({
+                                title: 'Email Error',
+                                text: data.email[0],
+                                icon: 'error'
+                            });
+                        } else if (data.domain) {
+                            swal({
+                                title: 'Domain Error',
+                                text: data.domain[0],
+                                icon: 'error'
+                            });
+                        } else {
+                            swal({
+                                title: 'Error',
+                                text: 'Something went wrong during registration.',
+                                icon: 'error'
+                            });
+                        }
+                        throw new Error('Registration failed');
                     });
                 }
+                return response.json();
+            })
+            .then(data => {
+                swal({
+                    title: 'Success',
+                    text: 'Registration successful!',
+                    icon: 'success',
+                    buttons: false,
+                    timer: 2000
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
     }
 

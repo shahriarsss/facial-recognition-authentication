@@ -4,7 +4,7 @@ Tags: facial recognition, two-factor authentication, login security, WordPress s
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,9 @@ Our plugin addresses these issues by leveraging facial recognition for authentic
 - Enhanced security with PBKDF2 password hashing (870,000 iterations with salt) on the Django server.
 - Seamless integration with WordPress login pages, adding an extra layer of security.
 - Simplified registration process for users to set up facial recognition and credentials.
+- New **Manage Account** section for users to change their password, update photo, or delete their account, secured with OTP and facial recognition.
+- Activation email sent during registration, with a 24-hour expiration period.
+- Each user can only register with a single email address.
 
 **Why Choose Our Plugin?**
 
@@ -80,9 +83,15 @@ No, our plugin works with any standard webcam.
 
 == Changelog ==
 
-= 1.0.3 - 2025-02-24 =
-* Added image quality checks for registration and login (face detection, clarity, and size).
-* Improved user guidance for capturing clear, close-up photos.
+= 1.1.0 - 2025-03-07 =
+* Added "Manage Account" section for users to change password, delete account, and update photo.
+* Implemented OTP verification with facial recognition for secure account changes.
+* New account activation email sent during registration, with 24-hour expiration.
+* Users can only register with a single email address.
+
+= 1.0.4 - 2025-02-24 =
+* Improved photo quality for better facial recognition accuracy.
+* Minor bug fixes and performance improvements.
 
 = 1.0.3 - 2025-02-23 =
 * Fixed login issue where FormData was not sending correctly, ensuring proper authentication with domain validation.
@@ -101,6 +110,9 @@ No, our plugin works with any standard webcam.
 * Initial release with facial recognition and secure authentication features.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+This update adds the "Manage Account" feature, enabling users to change passwords, delete accounts, and update photos with OTP and facial recognition for extra security. Update is highly recommended.
 
 = 1.0.4 =
 This update ensures better photo quality for accurate facial recognition. Update for improved security.

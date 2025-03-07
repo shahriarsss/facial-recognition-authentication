@@ -13,7 +13,7 @@ License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Description: Face ID registration and login for WordPress
 Author: New-way
-Version: 1.0.4
+Version: 1.1.0
 */
 
 define('FRA_FACEID_DIR', plugin_dir_path(__FILE__));
@@ -50,3 +50,11 @@ if (is_admin()) {
     }
 }
 
+function facial_recognition_enqueue_scripts() {
+    wp_enqueue_script('webcamjs', plugins_url('/assets/js/webcam.min.js', __FILE__), array(), '1.0', true);
+    wp_enqueue_script('main-js', plugins_url('/assets/js/main.js', __FILE__), array('jquery', 'webcamjs'), '1.0.4', true);
+    wp_enqueue_script('main2-js', plugins_url('/assets/js/main2.js', __FILE__), array('jquery', 'webcamjs'), '1.0.4', true);
+    wp_localize_script('main-js', 'pluginData', array('domain' => get_site_url()));
+    wp_localize_script('main2-js', 'pluginData', array('domain' => get_site_url()));
+}
+add_action('wp_enqueue_scripts', 'facial_recognition_enqueue_scripts');

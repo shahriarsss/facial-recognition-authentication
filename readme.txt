@@ -4,7 +4,7 @@ Tags: facial recognition, two-factor authentication, login security, WordPress s
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,9 @@ Yes, facial data is securely processed and stored on the Django server using ind
 = Do I need special hardware for facial recognition? =
 No, our plugin works with any standard webcam.
 
+= Does it work with Wordfence’s Two-Factor Authentication (2FA)? =
+Yes, as of version 1.1.1, the plugin is fully compatible with Wordfence, including its 2FA feature. Facial recognition runs first, followed by 2FA if enabled.
+
 == Screenshots ==
 
 1. **Login Page:** Enhanced login page with facial recognition.
@@ -82,6 +85,9 @@ No, our plugin works with any standard webcam.
 3. **Security Settings:** Plugin settings page for administrators.
 
 == Changelog ==
+
+= 1.1.1 - 2025-03-09 =
+* Added compatibility with Wordfence, including its Two-Factor Authentication (2FA) feature. Facial recognition now runs before 2FA for enhanced security.
 
 = 1.1.0 - 2025-03-07 =
 * Added "Manage Account" section for users to change password, delete account, and update photo.
@@ -110,6 +116,9 @@ No, our plugin works with any standard webcam.
 * Initial release with facial recognition and secure authentication features.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+This update adds full compatibility with Wordfence, including its 2FA feature. Facial recognition now runs before 2FA, ensuring seamless integration. Highly recommended update.
 
 = 1.1.0 =
 This update adds the "Manage Account" feature, enabling users to change passwords, delete accounts, and update photos with OTP and facial recognition for extra security. Update is highly recommended.

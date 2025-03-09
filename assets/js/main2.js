@@ -62,6 +62,17 @@
         });
 
         $('#accountForm').on('submit', manage_account);
+
+        // چک کردن 2FA و اجرای تشخیص چهره قبل از اون
+        if (pluginData.is_wordfence_2fa_active === 'true') {
+            console.log('Wordfence 2FA فعاله، ولی تشخیص چهره اول اجرا می‌شه');
+            // مخفی کردن فرم 2FA تا تشخیص چهره تموم شه
+            setTimeout(() => {
+                if ($('.wf-form-2fa').length) {
+                    $('.wf-form-2fa').hide();
+                }
+            }, 500);
+        }
     });
 
     function keydown(e) {
@@ -147,7 +158,15 @@
                         text: 'Login successful!',
                         icon: 'success',
                         timer: 2000
-                    }).then(() => refresh_page());
+                    }).then(() => {
+                        if (pluginData.is_wordfence_2fa_active === 'true') {
+                            // اگه 2FA فعال بود، فرم Wordfence رو نشون بده
+                            $('.wf-form-2fa').show();
+                            console.log('تشخیص چهره تموم شد، حالا 2FA اجرا می‌شه');
+                        } else {
+                            refresh_page(); // اگه 2FA نبود، مستقیم رفرش کن
+                        }
+                    });
                 }
             })
             .catch(error => {
